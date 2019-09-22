@@ -75,6 +75,12 @@
 	height: 24px;
 }
 
+.sprite_bookmark_icon.on {
+    background: url(../imgs/background01.png)no-repeat -159px -286px;
+	width: 19px;
+	height: 24px;
+}
+
 .sprite_small_heart_icon_outline {
     display: inline-block;
     background: url('../imgs/background01.png') no-repeat -323px -274px;
@@ -95,7 +101,6 @@ body {
     background: #fafafa;
 }
 
-
 #header {
     width: 100%;
     position: absolute;
@@ -106,6 +111,10 @@ body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+#header.on {
+    position: fixed;
+}
+
 #header .inner {
     width: 975px;
     height: 77px;
@@ -113,6 +122,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.5s;
+}
+
+#header.on .inner{
+    height: 52px;
 }
 
 #header .inner .logo > a {
@@ -132,6 +146,11 @@ body {
     position: absolute;
     right: -15px;
     top: -4px;
+    transition: all 0.5s;
+}
+
+#header.on .inner .logo .sprite_insta_icon::after{
+    opacity: 0;
 }
 
 #header .inner .logo div {
@@ -140,6 +159,11 @@ body {
 
 #header .inner .logo div:nth-child(2) {
     transform: translateY(2px);
+    transition: all 0.5s;
+}
+
+#header.on .inner .logo div:nth-child(2) {
+    opacity: 0;
 }
 
 #header .search_box {
@@ -292,6 +316,10 @@ body {
     cursor: pointer;
 }
 
+.sprite_heart_icon.on {
+    background: url('../imgs/background01.png') no-repeat -26px -261px;
+}
+
 .contents .likes {
     padding: 5px 20px;
     color: #262626;
@@ -356,6 +384,11 @@ body {
     position: absolute;
     right: 0;
     top: 0;
+}
+
+.side_box.on {
+    position: fixed;
+    top: 80px;
 }
 
 .side_box .profile_thumb {
@@ -437,7 +470,6 @@ body {
     */
 }
 
-
 .hidden_menu {
     width: 600px;
     /* background: red; */
@@ -488,11 +520,15 @@ body {
 }
 
 /* 반응형 적용 */
+@media screen and (min-width: 1001px){
+    .hidden_menu {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 1000px) {
-    
     #header .inner {
         width: 97.5%;
-        
     }
 
     #main_container {
@@ -501,7 +537,6 @@ body {
  
     #main_container .inner {
         width: 93.5%;
-        
     }
     
     .contents_box{
@@ -513,7 +548,6 @@ body {
     .side_box {
         display: none;
     }
-
 }
 
 @media screen and (max-width:
