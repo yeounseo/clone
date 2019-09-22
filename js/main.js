@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 const header = document.querySelector('#header');
 const sidebox = document.querySelector('.side_box');
@@ -89,3 +90,11 @@ if (delegation) {
 
 window.addEventListener('resize', resizeFunc);
 window.addEventListener('scroll', scrollFunc)
+=======
+const heart = document.querySelector('.heart_btn');
+
+heart.addEventListener('click', function () {
+
+    heart.classList.toggle('on');
+});
+>>>>>>> c9ae53a2bd3d946e671249c3689839a60f69f439
