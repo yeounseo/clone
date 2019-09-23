@@ -35,7 +35,7 @@ function delegationFunc(e) {
             },
             dataType: 'json',
             success: function (response) {
-                let likeCount = doucment.querySelector('#like-count-37');
+                let likeCount = document.querySelector('#like-count-37');
                 likeCount.innerHTML = '좋아요' + response.like_count + '개';
             },
             error: function (request, status, error) {
@@ -101,6 +101,44 @@ function delegationFunc(e) {
 
         document.querySelector('#add-comment-post-37 > input[type=text]').value = '';
 
+    } else if (elem.matches('[data-name="comment_delete"]')) {
+        $.ajax({
+            type: 'POST',
+            url: 'data/delete.json',
+            data: {
+                'pk': 37,
+
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.status) {
+                    let comt = document.querySelector('.comment-detail');
+                    comt.remove();
+                }
+            },
+            error: function (request, status, error) {
+                alert('문제가 발생했습니다.');
+            }
+        });
+    } else if (elem.matches('[data-name="follow"]')) {
+        $.ajax({
+            type: "POST",
+            url: "data/follow.json",
+            data: {
+                "pk": 37,
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.status) {
+                    document.querySelector('input.follow').value = "팔로잉";
+                } else {
+                    document.querySelector('input.follow').value = "팔로워";
+                }
+            },
+            error: function (request, status, error) {
+                alert('문제가 발생했습니다.');
+            }
+        })
     }
 
     elem.classList.toggle('on');
