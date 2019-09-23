@@ -77,8 +77,8 @@
 
 .sprite_bookmark_icon.on {
     background: url(../imgs/background01.png)no-repeat -159px -286px;
-	width: 19px;
-	height: 24px;
+    width: 19px;
+    height: 24px;
 }
 
 .sprite_small_heart_icon_outline {
@@ -125,7 +125,7 @@ body {
     transition: all 0.5s;
 }
 
-#header.on .inner{
+#header.on .inner {
     height: 52px;
 }
 
@@ -149,7 +149,7 @@ body {
     transition: all 0.5s;
 }
 
-#header.on .inner .logo .sprite_insta_icon::after{
+#header.on .inner .logo .sprite_insta_icon::after {
     opacity: 0;
 }
 
@@ -220,20 +220,6 @@ body {
 }
 
 #header .right_icons>div {}
-
-.box {
-    z-index: 0;
-    width: 50px;
-    height: 50px;
-    border: 1px solid black;
-    padding-top: 100px;
-    padding-left: 50px;
-    background: red;
-}
-
-.box.on {
-    background: green;
-}
 
 .contents {
     position: relative;
@@ -326,13 +312,13 @@ body {
     cursor: pointer;
 }
 
-<<<<<<< HEAD
+
 .sprite_heart_icon.on {
     background: url('../imgs/background01.png') no-repeat -26px -261px;
-=======
+}
+
 .heart_btn.on .sprite_heart_icon {
     background: url(../imgs/background01.png) no-repeat -26px -261px;
->>>>>>> c9ae53a2bd3d946e671249c3689839a60f69f439
 }
 
 .contents .likes {
@@ -349,7 +335,12 @@ body {
 
 .contents .comment_container .comment {
     display: flex;
+    flex-direction: column;
     font-size: 14px;
+}
+
+.contents .comment_container .comment-detail {
+    display: flex;
 }
 
 .contents .comment_container .comment .nick_name {
@@ -390,7 +381,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    pointer-events: none;
+    /* pointer-events: none; */
     opacity: 0.6;
 }
 
@@ -535,22 +526,16 @@ body {
 }
 
 /* 반응형 적용 */
-@media screen and (min-width: 1001px){
+@media screen and (min-width: 1001px) {
     .hidden_menu {
         display: none;
     }
 }
 
 @media screen and (max-width: 1000px) {
-<<<<<<< HEAD
-    #header .inner {
-        width: 97.5%;
-=======
 
     #header .inner {
         width: 97.5%;
-
->>>>>>> c9ae53a2bd3d946e671249c3689839a60f69f439
     }
 
     #main_container {
@@ -559,10 +544,6 @@ body {
 
     #main_container .inner {
         width: 93.5%;
-<<<<<<< HEAD
-=======
-
->>>>>>> c9ae53a2bd3d946e671249c3689839a60f69f439
     }
 
     .contents_box {

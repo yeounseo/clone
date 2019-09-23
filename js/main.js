@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 const header = document.querySelector('#header');
 const sidebox = document.querySelector('.side_box');
 const variableWidth = document.querySelectorAll('.contents_box .contents');
@@ -26,12 +24,83 @@ function delegationFunc(e) {
 
     if (elem.matches('[data-name="heartbeat"]')) {
         console.log('하트!');
+
+        let pk = elem.getAttribute('name');
+
+        $.ajax({
+            type: 'POST',
+            url: 'data/like.json',
+            data: {
+                pk
+            },
+            dataType: 'json',
+            success: function (response) {
+                let likeCount = doucment.querySelector('#like-count-37');
+                likeCount.innerHTML = '좋아요' + response.like_count + '개';
+            },
+            error: function (request, status, error) {
+                alert('로그인이 필요합니다.');
+                window.location.replace('https://www.naver.com');
+            }
+        });
+
     } else if (elem.matches('[data-name="bookmark"]')) {
         console.log('북마크');
+
+        let pk = elem.getAttribute('name');
+
+        $.ajax({
+            type: 'POST',
+            url: 'data/bookmark.json',
+            data: {
+                pk
+            },
+            dataType: 'json',
+            success: function (response) {
+                let bookmarkCount = doucment.querySelector('#bookmark-count-' + pk);
+                bookmarkCount.innerHTML = '북마크' + response.bookmark_count + '개';
+            },
+            error: function (request, status, error) {
+                alert('로그인이 필요합니다.');
+                window.location.replace('https://www.naver.com');
+            }
+        });
+
     } else if (elem.matches('[data-name="share"')) {
         console.log('공유!');
     } else if (elem.matches('[data-name="more"')) {
         console.log('더보기');
+    } else if (elem.matches('[data-name="comment"]')) {
+
+        let content = document.querySelector('#add-comment-post-37 > input[type=text]').value;
+
+        console.log(content);
+
+        if (content.length > 140) {
+            alert('댓글은 최대 140자 입력 가능합니다. 현재 글자수 :' + content.length);
+            return;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: './comment.html',
+            data: {
+                'pk': 37,
+                'content': content,
+
+            },
+            dataType: 'html',
+            success: function (data) {
+                document.querySelector('#comment-list-ajax-post-37').insertAdjacentHTML('afterbegin', data);
+            },
+            error: function (request, status, error) {
+                alert('문제가 발생했습니다.');
+
+            }
+        });
+
+        document.querySelector('#add-comment-post-37 > input[type=text]').value = '';
+
     }
 
     elem.classList.toggle('on');
@@ -90,11 +159,3 @@ if (delegation) {
 
 window.addEventListener('resize', resizeFunc);
 window.addEventListener('scroll', scrollFunc)
-=======
-const heart = document.querySelector('.heart_btn');
-
-heart.addEventListener('click', function () {
-
-    heart.classList.toggle('on');
-});
->>>>>>> c9ae53a2bd3d946e671249c3689839a60f69f439
